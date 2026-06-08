@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from time import perf_counter
 
 from portfolio_system.core.validation import validate_market_event
 from portfolio_system.domain.decisions import DecisionAction, PortfolioDecision
@@ -22,6 +23,7 @@ How it works:
 
 
 def generate_decision(event: MarketEvent, previous_price: float, threshold_percentage: float = 0.01,) -> PortfolioDecision:
+    start_time = perf_counter()
 
     validate_market_event(event)
 
@@ -47,12 +49,15 @@ def generate_decision(event: MarketEvent, previous_price: float, threshold_perce
 
     #time.sleep(5)
 
+    processing_duration_ms = (perf_counter() - start_time) * 1000
+
     return PortfolioDecision(
         event_id=event.event_id,
         asset=event.asset,
         action=action,
         reason=reason,
         processed_at=datetime.now(timezone.utc),
+        processing_duration_ms=processing_duration_ms,
         experiment_id=event.experiment_id,
         architecture_id=event.architecture_id,
     )

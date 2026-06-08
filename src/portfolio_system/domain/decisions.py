@@ -29,6 +29,7 @@ class PortfolioDecision:
     action: DecisionAction
     reason: str
     processed_at: datetime
+    processing_duration_ms: float
     experiment_id: str
     architecture_id: str
 
@@ -40,6 +41,7 @@ class PortfolioDecision:
             f"    Decision = {self.action.value}\n"
             f"    Reason = {self.reason}\n"
             f"    Time of Decision = {self.processed_at.strftime('%Y-%m-%d %H:%M:%S')}\n"
+            f"    Time to make Decision = {self.processing_duration_ms}ms"
             f"    Experiment ID = {self.experiment_id}\n"
             f"    Architecture ID = {self.architecture_id}"
         )

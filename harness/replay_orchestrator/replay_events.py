@@ -1,4 +1,5 @@
 from pathlib import Path
+import time
 
 from portfolio_system.adapters.local_decision_repo import LocalDecisionRepository
 from portfolio_system.core.processing import process_event
@@ -10,10 +11,14 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 CSV_PATH = PROJECT_ROOT / "data" / "processed" / "AAPL_1d_prices.csv"
 OUTPUT_PATH = PROJECT_ROOT / "experiments" / "raw" / "EXP-LOCAL-REPLAY-001-decisions.jsonl"
 
+processing_times: list[float] = []
 
 def main() -> None:
     experiment_id = "EXP-LOCAL-REPLAY-001"
     architecture_id = "A0-local"
+
+    event_rate_per_second = 100
+    delay_between_events = 1 / event_rate_per_second
 
     repository = LocalDecisionRepository(OUTPUT_PATH)
 
@@ -36,6 +41,8 @@ def main() -> None:
 
         decision = process_event(event=event, previous_price=previous_prices[event.asset], repository=repository)
 
+        processing_times.append(decision.processing_duration_ms)
+
         print(decision)
         print()
 
@@ -44,9 +51,15 @@ def main() -> None:
 
         processed_count += 1
 
+        time.sleep(delay_between_events)
+
+    average_processing_time = sum(processing_times) / len(processing_times)
+
     print("Replay complete:")
     print(f"  Decisions created = {processed_count}")
     print(f"  Events skipped = {skipped_count}")
+    print(f"  Event rate = {event_rate_per_second} events per second")
+    print(f"  Average processing time = {average_processing_time:.4f} ms")
     print(f"  Results saved to = {OUTPUT_PATH}")
 
 
