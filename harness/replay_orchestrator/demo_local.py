@@ -7,7 +7,7 @@ from portfolio_system.domain.events import MarketEvent
 def main() -> None:
     event = MarketEvent(
         event_id="evt-demo-001",
-        instrument="AAPL",
+        asset="AAPL",
         price=103.0,
         market_timestamp=datetime.now(timezone.utc),
         experiment_id="EXP-LOCAL-DEMO-001",
@@ -19,6 +19,8 @@ def main() -> None:
         previous_price=100.0,
     )
 
+    print(event)
+    print()
     print(decision)
 
 

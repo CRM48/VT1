@@ -10,9 +10,11 @@ from portfolio_system.domain.events import MarketEvent
 def make_event(price: float) -> MarketEvent:
     return MarketEvent(
         event_id="evt-001",
-        instrument="AAPL",
+        asset="AAPL",
         price=price,
         market_timestamp=datetime.now(timezone.utc),
+        experiment_id="A0-test-004",
+        architecture_id="A0"
     )
 
 

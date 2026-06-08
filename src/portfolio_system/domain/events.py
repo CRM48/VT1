@@ -23,3 +23,14 @@ class MarketEvent:
     market_timestamp: datetime
     experiment_id: str
     architecture_id: str
+
+    def __str__(self) -> str:
+        return (
+            "Market Event:\n"
+            f"    Event ID = {self.event_id}\n"
+            f"    Asset = {self.asset}\n"
+            f"    Price = {self.price}\n"
+            f"    Time of Event = {self.market_timestamp.strftime('%Y-%m-%d %H:%M:%S')}\n"
+            f"    Experiment ID = {self.experiment_id}\n"
+            f"    Architecture ID = {self.architecture_id}"
+        )

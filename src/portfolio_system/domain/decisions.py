@@ -31,3 +31,15 @@ class PortfolioDecision:
     processed_at: datetime
     experiment_id: str
     architecture_id: str
+
+    def __str__(self) -> str:
+        return (
+            "Portfolio Decision:\n"
+            f"    Event ID = {self.event_id}\n"
+            f"    Asset = {self.asset}\n"
+            f"    Decision = {self.action.value}\n"
+            f"    Reason = {self.reason}\n"
+            f"    Time of Decision = {self.processed_at.strftime('%Y-%m-%d %H:%M:%S')}\n"
+            f"    Experiment ID = {self.experiment_id}\n"
+            f"    Architecture ID = {self.architecture_id}"
+        )

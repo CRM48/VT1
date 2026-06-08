@@ -7,6 +7,10 @@ name = "portfolio-system"
 version = "0.1.0"
 description = "Prototype cloud-native portfolio decision system"
 requires-python = ">=3.10"
+dependencies = [
+    "pandas",
+    "yfinance"
+]
 
 [project.optional-dependencies]
 test = [

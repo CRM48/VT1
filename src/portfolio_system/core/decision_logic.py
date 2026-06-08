@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 from portfolio_system.core.validation import validate_market_event
 from portfolio_system.domain.decisions import DecisionAction, PortfolioDecision
 from portfolio_system.domain.events import MarketEvent
+import time
 
 """
 Generate a decision from a market event
@@ -44,9 +45,11 @@ def generate_decision(event: MarketEvent, previous_price: float, threshold_perce
         action = DecisionAction.HOLD
         reason = f"Price changed by {percentage_change:.2%}, within the threshold."
 
+    #time.sleep(5)
+
     return PortfolioDecision(
         event_id=event.event_id,
-        instrument=event.instrument,
+        asset=event.asset,
         action=action,
         reason=reason,
         processed_at=datetime.now(timezone.utc),
