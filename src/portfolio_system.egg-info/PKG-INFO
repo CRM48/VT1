@@ -5,5 +5,7 @@ Summary: Prototype cloud-native portfolio decision system
 Requires-Python: >=3.10
 Requires-Dist: pandas
 Requires-Dist: yfinance
+Requires-Dist: scikit-learn
+Requires-Dist: joblib
 Provides-Extra: test
 Requires-Dist: pytest>=8.0; extra == "test"

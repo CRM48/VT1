@@ -71,7 +71,7 @@ def download_prices(asset: str, start_date: str, end_date: str, interval: str = 
 
 
 def main() -> None:
-    download_prices(asset="AAPL", start_date="2025-01-01", end_date="2026-01-01", interval="1d")
+    download_prices(asset="AAPL", start_date="2023-01-01", end_date="2026-01-01", interval="1d")
 
 
 if __name__ == "__main__":

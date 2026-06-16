@@ -28,24 +28,18 @@ operational telemetry.
 - Full agentic AI reasoning quality
 
 ## Workload
-Describe the event payload and decision profiles.
 
 ## Architecture variants
 
 ### A0: Local baseline
-Describe the local workflow.
 
 ### A1: Always-on containerized monolith
-Describe the cloud baseline.
 
 ### A2: Serverless monolithic function
-Describe the Lambda-style deployment.
 
 ### A3: Event-driven workflow
-Describe the queue-based deployment.
 
 ### A4: Decomposed event-driven services
-Mark this as optional or future work.
 
 ## Independent variables
 - Architecture

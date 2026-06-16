@@ -1,5 +1,7 @@
 pandas
 yfinance
+scikit-learn
+joblib
 
 [test]
 pytest>=8.0

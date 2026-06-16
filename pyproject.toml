@@ -9,7 +9,10 @@ description = "Prototype cloud-native portfolio decision system"
 requires-python = ">=3.10"
 dependencies = [
     "pandas",
-    "yfinance"
+    "yfinance",
+    "scikit-learn",
+    "joblib"
+    "streamlit"
 ]
 
 [project.optional-dependencies]
